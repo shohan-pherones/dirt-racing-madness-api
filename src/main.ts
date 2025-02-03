@@ -2,17 +2,23 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {
-    cors: {
-      origin: [
-        'https://dirt-racing-madness-client.vercel.app',
-        'http://localhost:3000',
-      ],
-      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-      allowedHeaders: ['Content-Type', 'Authorization'],
-      credentials: true,
-    },
+  const app = await NestFactory.create(AppModule);
+
+  app.enableCors({
+    origin: [
+      'https://dirt-racing-madness-client.vercel.app',
+      'http://localhost:3000',
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'Access-Control-Allow-Headers',
+      'Access-Control-Allow-Origin',
+    ],
+    credentials: true,
   });
+
   await app.listen(process.env.PORT ?? 4000);
 }
 void bootstrap();
