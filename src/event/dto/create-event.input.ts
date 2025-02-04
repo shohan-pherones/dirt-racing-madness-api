@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-import { InputType, Int, Field } from '@nestjs/graphql';
-import { IsString, IsOptional, IsInt, IsDate } from 'class-validator';
+import { Field, InputType, Int } from '@nestjs/graphql';
+import { IsDate, IsInt, IsOptional, IsString } from 'class-validator';
 
 @InputType()
 export class CreateEventInput {
