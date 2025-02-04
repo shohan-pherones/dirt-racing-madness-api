@@ -1,7 +1,7 @@
 import { Field, Int, ObjectType, registerEnumType } from '@nestjs/graphql';
 import { EventStatus } from '@prisma/client';
-import { User } from 'src/auth/entities/user.entity';
 import { Booking } from 'src/booking/entities/booking.entity';
+import { User } from 'src/user/entities/user.entity';
 
 registerEnumType(EventStatus, {
   name: 'EventStatus',

@@ -1,6 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { User } from 'src/auth/entities/user.entity';
 import { Event } from 'src/event/entities/event.entity';
+import { User } from 'src/user/entities/user.entity';
 
 @ObjectType()
 export class Booking {

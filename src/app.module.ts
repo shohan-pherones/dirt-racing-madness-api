@@ -4,10 +4,11 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { EventModule } from './event/event.module';
-import { PrismaService } from './prisma/prisma.service';
 import { AuthModule } from './auth/auth.module';
 import { BookingModule } from './booking/booking.module';
+import { EventModule } from './event/event.module';
+import { PrismaService } from './prisma/prisma.service';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { BookingModule } from './booking/booking.module';
     EventModule,
     AuthModule,
     BookingModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],

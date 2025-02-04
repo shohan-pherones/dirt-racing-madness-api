@@ -6,11 +6,13 @@ import { CreateEventInput } from './dto/create-event.input';
 export class EventService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(createEventInput: CreateEventInput) {
+  async create(createEventInput: CreateEventInput, userId: string) {
     if (new Date(createEventInput.dateTime) <= new Date()) {
       throw new BadRequestException('Event date must be in the future');
     }
-    return await this.prisma.event.create({ data: createEventInput });
+    return await this.prisma.event.create({
+      data: { ...createEventInput, userId },
+    });
   }
 
   async findAll() {
