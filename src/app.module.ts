@@ -6,6 +6,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EventModule } from './event/event.module';
 import { PrismaService } from './prisma/prisma.service';
+import { AuthModule } from './auth/auth.module';
+import { BookingModule } from './booking/booking.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { PrismaService } from './prisma/prisma.service';
       sortSchema: true,
     }),
     EventModule,
+    AuthModule,
+    BookingModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],

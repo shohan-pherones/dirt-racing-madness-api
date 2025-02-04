@@ -1,5 +1,7 @@
 import { Field, Int, ObjectType, registerEnumType } from '@nestjs/graphql';
 import { EventStatus } from '@prisma/client';
+import { User } from 'src/auth/entities/user.entity';
+import { Booking } from 'src/booking/entities/booking.entity';
 
 registerEnumType(EventStatus, {
   name: 'EventStatus',
@@ -30,6 +32,15 @@ export class Event {
 
   @Field(() => EventStatus)
   status: EventStatus;
+
+  @Field()
+  userId: string;
+
+  @Field(() => User)
+  user: User;
+
+  @Field(() => [Booking])
+  bookings: Booking[];
 
   @Field()
   createdAt: Date;
