@@ -16,10 +16,24 @@ export class EventService {
   }
 
   async findAll() {
-    return await this.prisma.event.findMany();
+    return await this.prisma.event.findMany({
+      include: {
+        bookings: true,
+      },
+    });
   }
 
   async findOne(id: string) {
-    return await this.prisma.event.findUnique({ where: { id } });
+    return await this.prisma.event.findUnique({
+      where: { id },
+      include: {
+        user: true,
+        bookings: {
+          include: {
+            user: true,
+          },
+        },
+      },
+    });
   }
 }

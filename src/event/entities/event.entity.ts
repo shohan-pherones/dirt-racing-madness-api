@@ -39,8 +39,8 @@ export class Event {
   @Field(() => User)
   user: User;
 
-  @Field(() => [Booking])
-  bookings: Booking[];
+  @Field(() => [Booking], { nullable: true })
+  bookings?: Booking[];
 
   @Field()
   createdAt: Date;
