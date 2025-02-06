@@ -17,6 +17,10 @@ type Booking {
   userId: String!
 }
 
+input CreateBookingInput {
+  eventId: String!
+}
+
 input CreateEventInput {
   capacity: Int!
   dateTime: DateTime!
@@ -30,6 +34,10 @@ input CreateEventInput {
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
+
+input DeleteBookingInput {
+  eventId: String!
+}
 
 type Event {
   bookings: [Booking!]
@@ -54,7 +62,9 @@ enum EventStatus {
 }
 
 type Mutation {
+  createBooking(createBookingInput: CreateBookingInput!): Booking!
   createEvent(createEventInput: CreateEventInput!): Event!
+  deleteBooking(deleteBookingInput: DeleteBookingInput!): Booking!
   signIn(signInInput: SignInInput!): AuthResponse!
   signUp(signUpInput: SignUpInput!): AuthResponse!
 }
